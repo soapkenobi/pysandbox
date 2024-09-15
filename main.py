@@ -67,3 +67,8 @@ class PersonalFinanceManager:
         self.__transactions.pop(index)
 
     def display_transactions(self):
+        header = '-' * 28 + " Transaction History " + '-' * 28
+        print(header)
+        rows: list[list[str]] = [][]
+        rows.append(["ID", "Date", "Time", "Description", "Amount(" + self.currency + ")", "Important"])
+        for i in
