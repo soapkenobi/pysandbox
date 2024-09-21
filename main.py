@@ -1,4 +1,5 @@
 import datetime
+import random
 
 
 class Transaction:
@@ -6,12 +7,17 @@ class Transaction:
     __amount: float = None
     __important: bool = None
     __date: datetime.datetime = None
+    __uuid: str = None
 
     def __init__(self, amount, description="Untitled Transaction", important=False):
         self.__amount = amount
         self.__description = description
         self.__important = important
         self.__date = datetime.datetime.now()
+        self.__uuid = f"{random.randint(99, 10)}{chr(random.randint(0, 255))}"
+
+    def get_uuid(self) -> str:
+        return self.__uuid
 
     def get_time(self) -> datetime.datetime:
         return self.__date
@@ -69,6 +75,9 @@ class PersonalFinanceManager:
     def display_transactions(self):
         header = '-' * 28 + " Transaction History " + '-' * 28
         print(header)
-        rows: list[list[str]] = [][]
-        rows.append(["ID", "Date", "Time", "Description", "Amount(" + self.currency + ")", "Important"])
-        for i in
+        rows: list[list[str]] = []
+        headings = ["ID", "Date", "Time", "Description", "Amount(" + self.currency + ")", "Important"]
+        maxls = [0] * 6
+        for transaction in self.__transactions:
+            rows.append([transaction.get_uuid(), transaction.get_time().date(), transaction.get_time().time(), transaction.get_description(), transaction.get_amount(), transaction.is_important()])
+        Main.format_
